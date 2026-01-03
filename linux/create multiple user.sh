@@ -1,7 +1,7 @@
 #!/bin/bash
 
 USERS="naole kaleb zerihune"
-PASSWORD="ToSp#54321"
+PASSWORD="*******"
 
 # Create users with home directories and bash shell
 for user in $USERS; do
