@@ -1,4 +1,3 @@
-````markdown
 # Linux-Windows-Automation
 
 🚀 A collection of automation scripts for **Linux** and **Windows** systems.
@@ -6,7 +5,6 @@
 This repository is intended to store and share scripts that simplify system administration, configuration, maintenance, and everyday tasks across both operating systems.
 
 ---
-
 ## 📂 Repository Structure
 
 ```text
@@ -24,11 +22,8 @@ Linux-Windows-Automation/
 │
 └── README.md
 ```
-````
-
 > The structure may evolve as more scripts and tools are added.
 
----
 
 ## 🛠️ What You’ll Find Here
 
@@ -47,7 +42,6 @@ Linux-Windows-Automation/
 - System configuration and cleanup
 - User, service, and task automation
 
----
 
 ## 🎯 Purpose
 
@@ -56,7 +50,6 @@ Linux-Windows-Automation/
 - Build a personal automation toolkit
 - Share useful scripts with the community
 
----
 
 ## ▶️ Usage
 
@@ -95,10 +88,6 @@ Contributions, improvements, and suggestions are welcome!
 
 ---
 
-## 📜 License
-
-This project is licensed under the **MIT License** (or update this section with your preferred license).
-
 ---
 
 ## ⭐ Support
@@ -106,14 +95,6 @@ This project is licensed under the **MIT License** (or update this section with 
 If you find this repository useful, consider giving it a ⭐ to support the project!
 
 ```
-
----
-
-If you want, I can also:
-- Simplify it for a beginner repo
-- Make it more **DevOps-focused**
-- Add badges (OS, License, Shell, PowerShell)
-- Customize it based on your **actual scripts**
 
 Just tell me 👍
 ```
