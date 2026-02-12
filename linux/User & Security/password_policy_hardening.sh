@@ -1,47 +1,42 @@
 #!/bin/bash
 # --------------------------------------------------
-# Linux OS Password Aging & Complexity Hardening
+# Linux Password Policy Hardening
+# Enforces complexity, aging, and account lockout
 # Supports: RHEL/CentOS/Rocky/Alma & Ubuntu/Debian
 # Run as root
 # --------------------------------------------------
 
 set -e
 
-echo " Starting password policy hardening..."
+LOG_FILE="/var/log/password_policy_hardening.log"
+DATE=$(date '+%Y-%m-%d %H:%M:%S')
 
-# -------------------------------
+echo "============================================"
+echo " PASSWORD POLICY HARDENING - $DATE"
+echo "============================================"
+
 # Detect OS
-# -------------------------------
 if [ -f /etc/redhat-release ]; then
     OS="rhel"
 elif [ -f /etc/debian_version ]; then
     OS="debian"
 else
-    echo " Unsupported OS"
+    echo "Unsupported OS"
     exit 1
 fi
 
 echo "🖥 Detected OS: $OS"
 
-# -------------------------------
-# Install required packages
-# -------------------------------
-echo " Installing pwquality..."
-
+# Install pwquality
+echo "Installing pwquality..."
 if [ "$OS" = "rhel" ]; then
     yum install -y libpwquality
 else
-    apt update -y
-    apt install -y libpam-pwquality
+    apt install -y libpam-pwquality -qq
 fi
 
-# -------------------------------
 # Password Complexity
-# -------------------------------
 PWQUALITY_CONF="/etc/security/pwquality.conf"
-
-echo " Configuring password complexity..."
-
 cat > "$PWQUALITY_CONF" <<EOF
 minlen = 12
 dcredit = -1
@@ -50,12 +45,9 @@ lcredit = -1
 ocredit = -1
 retry = 3
 EOF
+echo "Configured password complexity."
 
-# -------------------------------
-# Ensure PAM uses pwquality
-# -------------------------------
-echo " Enforcing PAM pwquality..."
-
+# Enforce PAM pwquality
 for pam_file in /etc/pam.d/system-auth /etc/pam.d/password-auth /etc/pam.d/common-password; do
     if [ -f "$pam_file" ]; then
         grep -q pam_pwquality.so "$pam_file" || \
@@ -63,32 +55,17 @@ for pam_file in /etc/pam.d/system-auth /etc/pam.d/password-auth /etc/pam.d/commo
     fi
 done
 
-# -------------------------------
-# Password Aging Policy
-# -------------------------------
+# Password Aging
 LOGIN_DEFS="/etc/login.defs"
-
-echo " Configuring password aging..."
-
 sed -i 's/^PASS_MAX_DAYS.*/PASS_MAX_DAYS   90/' "$LOGIN_DEFS"
 sed -i 's/^PASS_MIN_DAYS.*/PASS_MIN_DAYS   7/' "$LOGIN_DEFS"
 sed -i 's/^PASS_WARN_AGE.*/PASS_WARN_AGE   14/' "$LOGIN_DEFS"
-
-# -------------------------------
-# Apply aging to existing users
-# (UID >= 1000, non-system users)
-# -------------------------------
-echo " Applying aging policy to existing users..."
 
 awk -F: '$3 >= 1000 {print $1}' /etc/passwd | while read -r user; do
     chage -M 90 -m 7 -W 14 "$user"
 done
 
-# -------------------------------
 # Account Lockout (pam_faillock)
-# -------------------------------
-echo " Configuring account lockout..."
-
 if [ "$OS" = "rhel" ]; then
     for pam in system-auth password-auth; do
         PAM_FILE="/etc/pam.d/$pam"
@@ -109,4 +86,8 @@ account required pam_faillock.so
 EOF
 fi
 
-echo " Password policy hardening completed successfully!"
+# Log summary
+echo "[$DATE] OS:$OS | Password policy hardening applied successfully" >> "$LOG_FILE"
+
+echo "Password policy hardening completed successfully!"
+echo "Log saved to $LOG_FILE"
