@@ -5,14 +5,16 @@
 This repository is intended to store and share scripts that simplify system administration, configuration, maintenance, and everyday tasks across both operating systems.
 
 ---
+
 ## 📂 Repository Structure
 
 ```text
 Linux-Windows-Automation/
 │
 ├── linux/
-│   ├──
-│   ├──
+│   ├── User & Security
+│   ├── Services & OS Health
+│   ├── Storage & Filesystems
 │   └──
 │
 ├── windows/
@@ -22,8 +24,8 @@ Linux-Windows-Automation/
 │
 └── README.md
 ```
-> The structure may evolve as more scripts and tools are added.
 
+> The structure may evolve as more scripts and tools are added.
 
 ## 🛠️ What You’ll Find Here
 
@@ -42,14 +44,12 @@ Linux-Windows-Automation/
 - System configuration and cleanup
 - User, service, and task automation
 
-
 ## 🎯 Purpose
 
 - Learn and practice automation
 - Save time on repetitive system tasks
 - Build a personal automation toolkit
 - Share useful scripts with the community
-
 
 ## ▶️ Usage
 
