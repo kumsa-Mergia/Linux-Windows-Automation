@@ -23,10 +23,10 @@ echo " Current Kernel  : $CURRENT_KERNEL"
 echo "----------------------------------------"
 
 if version_ge "$CURRENT_KERNEL" "$REQUIRED_KERNEL"; then
-    echo " STATUS : COMPLIANT ✅"
+    echo " STATUS : COMPLIANT "
     exit 0
 else
-    echo " STATUS : NON-COMPLIANT ❌"
+    echo " STATUS : NON-COMPLIANT "
     echo " ACTION : Kernel upgrade required"
     exit 1
 fi
