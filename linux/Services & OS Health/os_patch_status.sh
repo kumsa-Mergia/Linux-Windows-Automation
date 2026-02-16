@@ -19,14 +19,16 @@ echo "============================================"
 # Detect OS
 if [ -f /etc/redhat-release ]; then
     OS="rhel"
+
 elif [ -f /etc/debian_version ]; then
     OS="debian"
+
 else
     echo "Unsupported OS"
     exit 1
 fi
 
-echo "🖥 Detected OS: $OS"
+echo "Detected OS: $OS"
 echo "Current Kernel: $(uname -r)"
 
 # Patch Status Checker
