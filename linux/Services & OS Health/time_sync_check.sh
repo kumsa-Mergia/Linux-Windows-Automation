@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Time Sync Verification Script
 # Author: Kumsa Mega
 # Purpose: Check NTP/Chrony time synchronization status
@@ -47,6 +46,7 @@ elif command -v ntpq &>/dev/null; then
     echo ""
     echo "NTP Peers Info:"
     ntpq -p
+
 
 # Neither NTP nor Chrony installed
 else
