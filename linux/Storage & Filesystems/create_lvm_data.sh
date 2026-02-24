@@ -42,6 +42,7 @@ LV_PATH="/dev/$VG_NAME/$LV_NAME"
 log "Formatting $LV_PATH with $FS_TYPE"
 mkfs.$FS_TYPE "$LV_PATH"
 
+
 # ===== MOUNT =====
 log "Creating mount point $MOUNT_POINT"
 mkdir -p "$MOUNT_POINT"
@@ -49,14 +50,17 @@ mkdir -p "$MOUNT_POINT"
 log "Mounting $LV_PATH to $MOUNT_POINT"
 mount "$LV_PATH" "$MOUNT_POINT"
 
+
 # ===== FSTAB =====
 UUID=$(blkid -s UUID -o value "$LV_PATH")
 
 log "Adding entry to /etc/fstab"
 echo "UUID=$UUID  $MOUNT_POINT  $FS_TYPE  defaults  0  0" >> /etc/fstab
 
+
 # ===== VERIFY =====
 log "Verifying mount"
 df -h "$MOUNT_POINT"
 
-log "LVM setup completed successfully 🎉"
+
+log "LVM setup completed successfully"
