@@ -14,8 +14,7 @@ Linux-Windows-Automation/
 ├── linux/
 │   ├── User & Security
 │   ├── Services & OS Health
-│   ├── Storage & Filesystems
-│   └──
+│   ├── Storage & Filesystems
 │
 ├── windows/
 │   ├──
@@ -67,7 +66,7 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 .\script.ps1
 ```
 
-> Always review scripts before running them on your system.
+>Please Always review scripts before running them on your system.
 
 ---
 
