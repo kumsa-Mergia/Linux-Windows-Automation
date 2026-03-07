@@ -14,12 +14,13 @@ Linux-Windows-Automation/
 ├── linux/
 │   ├── User & Security
 │   ├── Services & OS Health
-│   ├── Storage & Filesystems
+│   ├── Storage & Filesystems
+
 │
 ├── windows/
-│   ├──
-│   ├──
-│   └──
+│   ├── Identity & Security
+│   ├── OS & Services
+│   ├── Storage & Disk
 │
 └── README.md
 ```
@@ -97,3 +98,4 @@ If you find this repository useful, consider giving it a ⭐ to support the proj
 
 Just tell me 👍
 ```
+
