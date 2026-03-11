@@ -7,7 +7,7 @@ VG_NAME="datavg"
 LV_NAME="datalv"
 MOUNT_POINT="/data"
 LV_SIZE="100%FREE"
-FS_TYPE="xfs"
+FS_TYPE="ext4"
 
 # ===== FUNCTIONS =====
 log() {
@@ -55,7 +55,7 @@ mount "$LV_PATH" "$MOUNT_POINT"
 UUID=$(blkid -s UUID -o value "$LV_PATH")
 
 log "Adding entry to /etc/fstab"
-echo "UUID=$UUID  $MOUNT_POINT  $FS_TYPE  defaults  0  0" >> /etc/fstab
+echo "UUID=$UUID  $MOUNT_POINT  $FS_TYPE  defaults  0  1" >> /etc/fstab
 
 
 # ===== VERIFY =====
