@@ -1,5 +1,6 @@
 # ============================================
-# Windows Patch / Update Check Script (Check Only)
+# Windows Patch / Update Check Script 
+# (Check Only)
 # ============================================
 
 $Computer = $env:COMPUTERNAME
