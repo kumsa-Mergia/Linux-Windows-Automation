@@ -2,6 +2,7 @@
 
 echo "Checking for unhealthy containers..."
 
+
 unhealthy=$(docker ps --filter "health=unhealthy" --format "{{.Names}}")
 
 if [ -z "$unhealthy" ]; then
