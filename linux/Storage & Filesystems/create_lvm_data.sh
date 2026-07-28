@@ -1,7 +1,8 @@
 #!/bin/bash
 set -e
 
-# ===== VARIABLES =====
+# =====you can change VARIABLES based on variab =====
+
 DISK="/dev/sdb"
 VG_NAME="datavg"
 LV_NAME="datalv"
